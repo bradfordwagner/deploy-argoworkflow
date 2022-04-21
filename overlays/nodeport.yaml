@@ -8,6 +8,6 @@ spec:
     port: 2746
     protocol: TCP
     targetPort: 2746
-    nodePort: 30002 # bind to same port that kind has exposed
+    nodePort: 30002
   type: NodePort
 
