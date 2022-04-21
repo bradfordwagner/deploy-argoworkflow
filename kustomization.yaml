@@ -4,7 +4,16 @@ kind: Kustomization
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-postgres.yaml
 
-patchesStrategicMerge:
-  - overlays/nodeport.yaml
+patchesJSON6902:
+- target:
+    kind: Service
+    name: argo-server
+  patch: |-
+    - op: replace
+      path: /spec/type
+      value: NodePort
+    - op: replace
+      path: /spec/ports/0/nodePort
+      value: 30002
 
 namespace: argo
