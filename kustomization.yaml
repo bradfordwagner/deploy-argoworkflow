@@ -6,6 +6,13 @@ resources:
 
 patchesJSON6902:
 - target:
+    kind: Deployment
+    name: argo-server
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: quay.io/bradfordwagner/argo:2.2.1-argocli-v3.3.1
+- target:
     kind: Service
     name: argo-server
   patch: |-
